@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+    <defs>
+        <!-- Perfect vertical split clip paths -->
+        <clipPath id="left-split">
+            <rect x="0" y="0" width="250" height="500" />
+        </clipPath>
+        <clipPath id="right-split">
+            <rect x="250" y="0" width="250" height="500" />
+        </clipPath>
+
+        <!-- Path for the bottom tagline -->
+        <path id="tagline-path" d="M 55 250 A 195 195 0 0 1 445 250" fill="none" />
+
+        <!-- Weightlifter Silhouette -->
+        <g id="weightlifter" transform="translate(37.5, 20) scale(0.85)" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Head -->
+            <circle cx="250" cy="55" r="12" fill="currentColor" />
+            <!-- Torso -->
+            <line x1="250" y1="72" x2="250" y2="110" stroke="currentColor" stroke-width="10" />
+            <!-- Arms -->
+            <path d="M 250 78 L 205 45 L 205 40" stroke="currentColor" stroke-width="8" fill="none" />
+            <path d="M 250 78 L 295 45 L 295 40" stroke="currentColor" stroke-width="8" fill="none" />
+            <!-- Legs -->
+            <path d="M 250 108 L 220 135 L 220 145" stroke="currentColor" stroke-width="10" fill="none" />
+            <path d="M 250 108 L 280 135 L 280 145" stroke="currentColor" stroke-width="10" fill="none" />
+            <!-- Barbell Bar -->
+            <line x1="140" y1="40" x2="360" y2="40" stroke="currentColor" stroke-width="6" />
+            <!-- Left Plates -->
+            <rect x="165" y="15" width="10" height="50" rx="2" fill="currentColor" />
+            <rect x="150" y="22" width="8" height="36" rx="2" fill="currentColor" />
+            <!-- Right Plates -->
+            <rect x="325" y="15" width="10" height="50" rx="2" fill="currentColor" />
+            <rect x="342" y="22" width="8" height="36" rx="2" fill="currentColor" />
+        </g>
+
+        <!-- Core Logo Elements (Shared between both color halves) -->
+        <g id="logo-core">
+            <!-- Outer and Inner Rings -->
+            <circle cx="250" cy="250" r="234" stroke="currentColor" stroke-width="12" fill="none" />
+            <circle cx="250" cy="250" r="218" stroke="currentColor" stroke-width="2" fill="none" />
+
+            <!-- Hardware Accent Dots -->
+            <circle cx="90" cy="90" r="4" fill="currentColor" />
+            <circle cx="410" cy="90" r="4" fill="currentColor" />
+            <circle cx="90" cy="410" r="4" fill="currentColor" />
+            <circle cx="410" cy="410" r="4" fill="currentColor" />
+
+            <!-- Side Diamond Stars -->
+            <path d="M 100 230 L 106 244 L 120 250 L 106 256 L 100 270 L 94 256 L 80 250 L 94 244 Z" fill="currentColor" />
+            <path d="M 400 230 L 406 244 L 420 250 L 406 256 L 400 270 L 394 256 L 380 250 L 394 244 Z" fill="currentColor" />
+
+            <!-- Top Arc Gym Silhouette -->
+            <use href="#weightlifter" />
+
+            <!-- Central Bold Geometric 'S' (Skewed for dynamic motion) -->
+            <polygon points="330,155 330,205 220,205 220,240 330,240 330,375 170,375 170,325 280,325 280,290 170,290 170,155" 
+                     fill="currentColor" 
+                     transform="translate(250, 265) skewX(-15) translate(-250, -265)" />
+
+            <!-- Main Brand Text -->
+            <text x="250" y="420" font-family="Impact, system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" letter-spacing="2" text-anchor="middle" fill="currentColor">SSK GYM</text>
+
+            <!-- Text Underline Anchor -->
+            <line x1="180" y1="435" x2="320" y2="435" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+
+            <!-- Bottom Arc Tagline -->
+            <text fill="currentColor">
+                <textPath href="#tagline-path" startOffset="50%" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="18" letter-spacing="4">WORK • SWEAT • ACHIEVE</textPath>
+            </text>
+        </g>
+    </defs>
+
+    <!-- Left Half (Red) -->
+    <use href="#logo-core" color="#E63946" clip-path="url(#left-split)" />
+
+    <!-- Right Half (Blue) -->
+    <use href="#logo-core" color="#1D3557" clip-path="url(#right-split)" />
+</svg>
