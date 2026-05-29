@@ -18,9 +18,14 @@
     ::-webkit-scrollbar-thumb { background: #E63946; }
     .facility-card { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
     .facility-card:hover { border-color: rgba(230,57,70,0.5); transform: translateY(-3px); }
-    .plan-card { border: 1px solid rgba(255,255,255,0.07); background: #111; transition: border-color 0.3s, transform 0.3s; }
+    .plan-card { border: 1px solid rgba(255,255,255,0.07); background: #111; transition: border-color 0.3s; flex-shrink: 0; width: 260px; }
     .plan-card:hover { border-color: rgba(230,57,70,0.45); }
     .plan-featured { border-color: rgba(230,57,70,0.5) !important; background: #160e0e !important; }
+    .plan-slider { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+    .plan-slider::-webkit-scrollbar { height: 3px; }
+    .plan-slider::-webkit-scrollbar-track { background: #1a1a1a; }
+    .plan-slider::-webkit-scrollbar-thumb { background: #E63946; border-radius: 2px; }
+    .plan-slider .plan-card { scroll-snap-align: start; }
     .trainer-card { border: 1px solid rgba(255,255,255,0.05); background: #0E0E0E; transition: border-color 0.3s, transform 0.2s; cursor: pointer; position: relative; overflow: hidden; }
     .trainer-card:hover { border-color: rgba(230,57,70,0.4); transform: translateX(6px); }
     .trainer-card .trainer-img { transition: filter 0.4s ease, transform 0.4s ease; filter: grayscale(70%); }
@@ -157,7 +162,7 @@
 
       <!-- Row 1: Cardio (1 col) + Equipment (2 col) — both same height -->
       <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[340px]">
-        <img src="images/facility-ground-floor-3.jpg" alt="Cardio & HIIT" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-ground-floor-3.jpg" alt="Cardio & HIIT" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.15) 100%);"></div>
         <div class="relative z-10 p-7 flex flex-col justify-end h-full min-h-[340px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Ground Floor</span>
@@ -170,7 +175,7 @@
       </div>
 
       <div class="facility-card relative overflow-hidden group cursor-pointer md:col-span-2 min-h-[340px]">
-        <img src="images/facility-top-floor-2.jpg" alt="Equipment & Training Zone" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-top-floor-2.jpg" alt="Equipment & Training Zone" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.15) 100%);"></div>
         <div class="relative z-10 p-7 flex flex-col justify-end h-full min-h-[340px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Top Floor</span>
@@ -184,7 +189,7 @@
 
       <!-- Row 2: 3 equal -->
       <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
-        <img src="images/facility-bmr-machine.jpg" alt="BMR Machine" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-bmr-machine.jpg" alt="BMR Machine" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
         <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Assessment</span>
@@ -193,7 +198,7 @@
       </div>
 
       <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
-        <img src="images/facility-top-floor-3.jpg" alt="Weight Training" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-top-floor-3.jpg" alt="Weight Training" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
         <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Strength</span>
@@ -202,7 +207,7 @@
       </div>
 
       <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
-        <img src="images/facility-aquaguard.jpg" alt="Aquaguard Water" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-aquaguard.jpg" alt="Aquaguard Water" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
         <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Hydration</span>
@@ -212,7 +217,7 @@
 
       <!-- Row 3: 3 equal -->
       <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
-        <img src="images/facility-ground-floor-2.jpg" alt="Treadmill Zone" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-ground-floor-2.jpg" alt="Treadmill Zone" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
         <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Cardio</span>
@@ -221,7 +226,7 @@
       </div>
 
       <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
-        <img src="images/facility-steam-bath.jpg" alt="Steam Bath" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-steam-bath.jpg" alt="Steam Bath" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
         <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Premium</span>
@@ -230,7 +235,7 @@
       </div>
 
       <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
-        <img src="images/facility-massage-chair.jpg" alt="Massage Chair" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <img src="images/facility-massage-chair.jpg" alt="Massage Chair" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
         <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
           <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Recovery</span>
@@ -318,8 +323,8 @@
   </div>
 </section>
 
-<!-- ========== MEMBERSHIP ========== -->
-<section id="membership" class="py-20 md:py-28 px-5 md:px-10 bg-[#111111] grid-bg">
+<!-- MEMBERSHIP MOVED — see after trainers -->
+<section id="membership-placeholder" class="hidden">
   <div class="max-w-7xl mx-auto">
     <div class="mb-10 text-center">
       <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#E63946] block mb-4">— 2026 Plans</span>
@@ -447,9 +452,6 @@
       </div>
     </div>
 
-    <p class="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mt-8">
-      Call 81358 07345 to enroll · 10% PT discount on Half-Yearly & Yearly plans
-    </p>
   </div>
 </section>
 
@@ -644,6 +646,121 @@
     </div>
   </div>
 </div>
+
+<!-- ========== MEMBERSHIP ========== -->
+<section id="membership" class="py-20 md:py-28 px-5 md:px-10 bg-[#111111] grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10 text-center">
+      <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#E63946] block mb-4">— 2026 Plans</span>
+      <h2 class="font-display text-5xl md:text-7xl uppercase leading-none mb-4">
+        Choose Your<br /><span class="text-[#E63946]">Commitment</span>
+      </h2>
+      <p class="text-white/40 max-w-sm mx-auto text-sm font-medium">Transparent pricing. All facilities included. No hidden charges.</p>
+    </div>
+
+    <!-- Toggle -->
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex border border-white/10 p-1 gap-1">
+        <button id="tab-short" onclick="showPlans('short')" class="px-6 py-3 text-[11px] font-black uppercase tracking-widest transition-all duration-300 bg-[#E63946] text-white">Short Term</button>
+        <button id="tab-long" onclick="showPlans('long')" class="px-6 py-3 text-[11px] font-black uppercase tracking-widest transition-all duration-300 text-white/40 hover:text-white">Long Term</button>
+      </div>
+    </div>
+
+    <!-- Short Term Slider -->
+    <div id="plans-short" class="plan-slider">
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Drop-In</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Daily Pass</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">200</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">Per Day · Walk-in anytime</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Registration</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Admission Fee</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">1,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">One-Time · New members</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card plan-featured p-6 flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E63946] to-transparent"></div>
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-[#E63946] text-white self-start mb-5">Most Flexible</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Monthly</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter text-[#E63946]">2,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">1 Month · Full access</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center bg-[#E63946] text-white hover:bg-[#C1121F] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Student Offer</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Student</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">1,500</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">1 Month · Valid ID required</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Senior Special</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Senior Citizen</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">1,500</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">1 Month · Age 60+</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+    </div>
+
+    <!-- Long Term Slider -->
+    <div id="plans-long" class="plan-slider hidden">
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Save More</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Quarterly</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">5,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">3 Months · Uninterrupted</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Popular</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Half Yearly</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">8,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">6 Months · Great value</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card plan-featured p-6 flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E63946] to-transparent"></div>
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-[#E63946] text-white self-start mb-5">Best Value</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Yearly</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter text-[#E63946]">14,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">12 Months · Max savings</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center bg-[#E63946] text-white hover:bg-[#C1121F] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Couple Plan</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Couple</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">12,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">12 Months · Train together</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Senior Annual</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Senior Citizen</h3>
+        <div class="my-5"><span class="text-[10px] font-bold text-[#E63946]">₹</span><span class="text-5xl font-black tracking-tighter">12,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">12 Months · Age 60+</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+    </div>
+
+    <p class="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mt-8">
+      Call 81358 07345 to enroll · 10% PT discount on Half-Yearly & Yearly plans
+    </p>
+  </div>
+</section>
 
 <!-- ========== CONTACT ========== -->
 <section id="contact" class="py-20 md:py-28 px-5 md:px-10 bg-[#111111] grid-bg">
