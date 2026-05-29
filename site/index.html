@@ -1055,15 +1055,15 @@
     const tabLong = document.getElementById('tab-long');
 
     if (type === 'short') {
-      shortPlans.classList.remove('hidden');
-      longPlans.classList.add('hidden');
+      shortPlans.style.display = 'flex';
+      longPlans.style.display = 'none';
       tabShort.classList.add('bg-[#E63946]', 'text-white');
       tabShort.classList.remove('text-white/40');
       tabLong.classList.remove('bg-[#E63946]', 'text-white');
       tabLong.classList.add('text-white/40');
     } else {
-      shortPlans.classList.add('hidden');
-      longPlans.classList.remove('hidden');
+      shortPlans.style.display = 'none';
+      longPlans.style.display = 'flex';
       tabLong.classList.add('bg-[#E63946]', 'text-white');
       tabLong.classList.remove('text-white/40');
       tabShort.classList.remove('bg-[#E63946]', 'text-white');
