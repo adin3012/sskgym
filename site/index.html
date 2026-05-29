@@ -16,8 +16,8 @@
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #0a0a0a; }
     ::-webkit-scrollbar-thumb { background: #E63946; }
-    .facility-img { transition: transform 0.5s ease; }
-    .facility-card:hover .facility-img { transform: scale(1.06); }
+    .facility-card { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .facility-card:hover { border-color: rgba(230,57,70,0.5); transform: translateY(-3px); }
     .plan-card { border: 1px solid rgba(255,255,255,0.07); background: #111; transition: border-color 0.3s, transform 0.3s; }
     .plan-card:hover { border-color: rgba(230,57,70,0.45); }
     .plan-featured { border-color: rgba(230,57,70,0.5) !important; background: #160e0e !important; }
@@ -122,17 +122,17 @@
       </div>
       <div class="flex items-center gap-8">
         <div>
-          <div class="font-display text-4xl text-[#E63946]">6</div>
+          <div class="font-display text-4xl text-[#E63946] count-up" data-target="6" data-prefix="">0</div>
           <div class="text-[10px] font-bold uppercase tracking-widest text-white/35 mt-1">Expert Trainers</div>
         </div>
         <div class="w-px h-12 bg-white/10"></div>
         <div>
-          <div class="font-display text-4xl text-[#E63946]">2</div>
+          <div class="font-display text-4xl text-[#E63946] count-up" data-target="2" data-prefix="">0</div>
           <div class="text-[10px] font-bold uppercase tracking-widest text-white/35 mt-1">Training Floors</div>
         </div>
         <div class="w-px h-12 bg-white/10"></div>
         <div>
-          <div class="font-display text-4xl text-[#E63946]">₹200</div>
+          <div class="font-display text-4xl text-[#E63946] count-up" data-target="200" data-prefix="&#8377;">&#8377;0</div>
           <div class="text-[10px] font-bold uppercase tracking-widest text-white/35 mt-1">Start Daily</div>
         </div>
       </div>
@@ -140,7 +140,6 @@
   </div>
 
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-    <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30">Scroll</span>
     <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent pulse-slow"></div>
   </div>
 </section>
@@ -154,101 +153,88 @@
         World-Class<br /><span class="text-outline">Facilities</span>
       </h2>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="images/facility-ground-floor-3.jpg" alt="Cardio & HIIT" class="facility-img w-full h-full object-cover" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Ground Floor</span>
-            <h3 class="font-display text-xl uppercase">Cardio & HIIT</h3>
+      <!-- Row 1: Cardio (1 col) + Equipment (2 col) — both same height -->
+      <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[340px]">
+        <img src="images/facility-ground-floor-3.jpg" alt="Cardio & HIIT" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.15) 100%);"></div>
+        <div class="relative z-10 p-7 flex flex-col justify-end h-full min-h-[340px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Ground Floor</span>
+          <h3 class="font-display text-2xl uppercase text-white">Cardio & HIIT</h3>
+          <div class="mt-3 flex items-center gap-2 text-[#E63946]">
+            <span class="w-4 h-px bg-[#E63946]"></span>
+            <span class="text-[9px] font-bold uppercase tracking-[0.4em]">Included in all plans</span>
           </div>
         </div>
       </div>
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group md:col-span-2">
-        <div class="aspect-[16/7] overflow-hidden">
-          <img src="images/facility-top-floor-2.jpg" alt="Top Floor Training" class="facility-img w-full h-full object-cover" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-5">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Top Floor</span>
-            <h3 class="font-display text-2xl uppercase">Equipment & Training Zone</h3>
+      <div class="facility-card relative overflow-hidden group cursor-pointer md:col-span-2 min-h-[340px]">
+        <img src="images/facility-top-floor-2.jpg" alt="Equipment & Training Zone" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.15) 100%);"></div>
+        <div class="relative z-10 p-7 flex flex-col justify-end h-full min-h-[340px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Top Floor</span>
+          <h3 class="font-display text-3xl uppercase text-white">Equipment & Training Zone</h3>
+          <div class="mt-3 flex items-center gap-2 text-[#E63946]">
+            <span class="w-4 h-px bg-[#E63946]"></span>
+            <span class="text-[9px] font-bold uppercase tracking-[0.4em]">Included in all plans</span>
           </div>
         </div>
       </div>
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="images/facility-bmr-machine.jpg" alt="BMR Machine" class="facility-img w-full h-full object-cover" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Assessment</span>
-            <h3 class="font-display text-xl uppercase">BMR Machine</h3>
-          </div>
+      <!-- Row 2: 3 equal -->
+      <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
+        <img src="images/facility-bmr-machine.jpg" alt="BMR Machine" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
+        <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Assessment</span>
+          <h3 class="font-display text-xl uppercase text-white">BMR Machine</h3>
         </div>
       </div>
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="images/facility-top-floor-3.jpg" alt="Training Equipment" class="facility-img w-full h-full object-cover" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Strength</span>
-            <h3 class="font-display text-xl uppercase">Weight Training</h3>
-          </div>
+      <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
+        <img src="images/facility-top-floor-3.jpg" alt="Weight Training" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
+        <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Strength</span>
+          <h3 class="font-display text-xl uppercase text-white">Weight Training</h3>
         </div>
       </div>
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="images/facility-aquaguard.jpg" alt="Aquaguard Water" class="facility-img w-full h-full object-cover" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Hydration</span>
-            <h3 class="font-display text-xl uppercase">Aquaguard Water</h3>
-          </div>
+      <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
+        <img src="images/facility-aquaguard.jpg" alt="Aquaguard Water" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
+        <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Hydration</span>
+          <h3 class="font-display text-xl uppercase text-white">Aquaguard Water</h3>
         </div>
       </div>
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="images/facility-ground-floor-2.jpg" alt="Treadmill Zone" class="facility-img w-full h-full object-cover" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Cardio</span>
-            <h3 class="font-display text-xl uppercase">Treadmill Zone</h3>
-          </div>
+      <!-- Row 3: 3 equal -->
+      <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
+        <img src="images/facility-ground-floor-2.jpg" alt="Treadmill Zone" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
+        <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Cardio</span>
+          <h3 class="font-display text-xl uppercase text-white">Treadmill Zone</h3>
         </div>
       </div>
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="images/facility-steam-bath.jpg" alt="Steam Bath" class="facility-img w-full h-full object-cover object-top" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Premium</span>
-            <h3 class="font-display text-xl uppercase">Steam Bath</h3>
-          </div>
+      <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
+        <img src="images/facility-steam-bath.jpg" alt="Steam Bath" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
+        <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Premium</span>
+          <h3 class="font-display text-xl uppercase text-white">Steam Bath</h3>
         </div>
       </div>
 
-      <div class="facility-card relative overflow-hidden cursor-pointer group">
-        <div class="aspect-[4/3] overflow-hidden">
-          <img src="images/facility-massage-chair.jpg" alt="Massage Chair" class="facility-img w-full h-full object-cover object-top" />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
-          <div>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Recovery</span>
-            <h3 class="font-display text-xl uppercase">Massage Chair</h3>
-          </div>
+      <div class="facility-card relative overflow-hidden group cursor-pointer min-h-[260px]">
+        <img src="images/facility-massage-chair.jpg" alt="Massage Chair" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.65) 50%, transparent 100%);"></div>
+        <div class="relative z-10 p-6 flex flex-col justify-end h-full min-h-[260px]">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Recovery</span>
+          <h3 class="font-display text-xl uppercase text-white">Massage Chair</h3>
         </div>
       </div>
 
@@ -809,6 +795,28 @@
   menuClose.addEventListener('click', closeMenu);
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  // ===== COUNT-UP ANIMATION =====
+  const countUps = document.querySelectorAll('.count-up');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const duration = 1200;
+      const steps = 40;
+      const increment = target / steps;
+      let current = 0;
+      const interval = setInterval(() => {
+        current = Math.min(current + increment, target);
+        el.textContent = prefix + Math.round(current);
+        if (current >= target) clearInterval(interval);
+      }, duration / steps);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  countUps.forEach(el => countObserver.observe(el));
 
   // ===== YOUTUBE CLICK-TO-PLAY =====
   document.querySelectorAll('.yt-poster').forEach(el => {
