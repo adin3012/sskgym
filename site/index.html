@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSK Gym — Premium Fitness in Guwahati</title>
+  <meta name="description" content="SSK Gym at Beltola Tiniali, Guwahati — premium fitness with steam bath, massage chairs, BMR machine, and expert personal trainers. Join from ₹200." />
+  <link rel="icon" href="images/logo-updated.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0A0A0A; color: white; overflow-x: hidden; }
+    .font-display { font-family: 'Anton', sans-serif; }
+    .text-outline { -webkit-text-stroke: 2px white; color: transparent; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #E63946; }
+    .facility-img { transition: transform 0.5s ease; }
+    .facility-card:hover .facility-img { transform: scale(1.06); }
+    .plan-card { border: 1px solid rgba(255,255,255,0.07); background: #111; transition: border-color 0.3s, transform 0.3s; }
+    .plan-card:hover { border-color: rgba(230,57,70,0.45); }
+    .plan-featured { border-color: rgba(230,57,70,0.5) !important; background: #160e0e !important; }
+    .trainer-card { border: 1px solid rgba(255,255,255,0.05); background: #0E0E0E; transition: border-color 0.3s, transform 0.2s; cursor: pointer; position: relative; overflow: hidden; }
+    .trainer-card:hover { border-color: rgba(230,57,70,0.4); transform: translateX(6px); }
+    .trainer-card .trainer-img { transition: filter 0.4s ease, transform 0.4s ease; filter: grayscale(70%); }
+    .trainer-card:hover .trainer-img { filter: grayscale(0%); transform: scale(1.05); }
+    .trainer-card .red-bar { position: absolute; right: 0; top: 0; bottom: 0; width: 3px; background: #E63946; transform: scaleY(0); transition: transform 0.3s; transform-origin: center; }
+    .trainer-card:hover .red-bar { transform: scaleY(1); }
+    .trainer-card .card-glow { position: absolute; top: -20px; right: -20px; width: 50px; height: 50px; background: rgba(230,57,70,0.12); border-radius: 50%; filter: blur(10px); opacity: 0; transition: opacity 0.3s; }
+    .trainer-card:hover .card-glow { opacity: 1; }
+    .trainer-card:hover .card-name { color: #E63946; }
+    .card-name { transition: color 0.2s; }
+    /* Modal */
+    #trainer-modal { display: none; }
+    #trainer-modal.open { display: flex; }
+    .skill-bar-fill { width: 0; transition: width 0.8s ease; }
+    #modal-box { animation: modalIn 0.25s ease forwards; }
+    @keyframes modalIn { from { opacity:0; transform: scale(0.95) translateY(20px); } to { opacity:1; transform: scale(1) translateY(0); } }
+    .header-scrolled { background: rgba(10,10,10,0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    @keyframes pulse-slow { 0%,100%{opacity:.4;} 50%{opacity:.9;} }
+    .pulse-slow { animation: pulse-slow 2s infinite; }
+    .grid-bg {
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header id="header" class="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-4 flex items-center justify-between transition-all duration-500">
+  <a href="#" class="flex items-center">
+    <div class="bg-white rounded-md p-1">
+      <img src="images/logo-updated.jpg" alt="SSK Gym" class="h-9 w-auto" />
+    </div>
+  </a>
+  <nav class="hidden md:flex items-center gap-8">
+    <a href="#facilities" class="text-[11px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors">Facilities</a>
+    <a href="#videos" class="text-[11px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors">Videos</a>
+    <a href="#membership" class="text-[11px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors">Membership</a>
+    <a href="#trainers" class="text-[11px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors">Trainers</a>
+    <a href="#contact" class="text-[11px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors">Contact</a>
+  </nav>
+  <a href="tel:8135807345" class="hidden md:inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#E63946] border border-[#E63946]/40 px-5 py-2.5 hover:bg-[#E63946] hover:text-white transition-all duration-300">
+    Join Now
+  </a>
+  <button id="menu-btn" class="md:hidden p-2 text-white" aria-label="Open menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+</header>
+
+<!-- ========== MOBILE MENU ========== -->
+<div id="mobile-menu" class="fixed inset-0 z-[200] bg-[#0A0A0A] flex flex-col items-center justify-center transition-all duration-300 opacity-0 pointer-events-none">
+  <button id="menu-close" class="absolute top-5 right-5 p-2 text-white/60 hover:text-white">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <nav class="flex flex-col gap-8 items-center">
+    <a href="#facilities" class="nav-mobile text-3xl font-display uppercase text-white/80 hover:text-[#E63946] transition-colors">Facilities</a>
+    <a href="#videos" class="nav-mobile text-3xl font-display uppercase text-white/80 hover:text-[#E63946] transition-colors">Videos</a>
+    <a href="#membership" class="nav-mobile text-3xl font-display uppercase text-white/80 hover:text-[#E63946] transition-colors">Membership</a>
+    <a href="#trainers" class="nav-mobile text-3xl font-display uppercase text-white/80 hover:text-[#E63946] transition-colors">Trainers</a>
+    <a href="#contact" class="nav-mobile text-3xl font-display uppercase text-white/80 hover:text-[#E63946] transition-colors">Contact</a>
+  </nav>
+  <a href="tel:8135807345" class="nav-mobile mt-12 text-[11px] font-black uppercase tracking-widest text-white bg-[#E63946] px-10 py-4">
+    Call: 81358 07345
+  </a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section id="hero" class="relative h-screen flex items-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="images/facility-top-floor-1.jpg" alt="SSK Gym Floor" class="w-full h-full object-cover" />
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.55) 50%, rgba(10,10,10,0.9) 100%);"></div>
+  </div>
+  <div class="absolute top-0 left-0 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(230,57,70,0.1) 0%, transparent 70%);"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 md:px-10 w-full pt-20">
+    <div class="max-w-3xl">
+      <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#E63946] block mb-6">— Beltola Tiniali · Guwahati, Assam</span>
+      <h1 class="font-display text-7xl md:text-9xl uppercase leading-[0.9] mb-8">
+        Where<br />
+        <span class="text-outline">Strength</span><br />
+        Begins
+      </h1>
+      <p class="text-white/55 text-lg font-medium mb-10 max-w-md leading-relaxed">
+        Premium gym facilities, expert trainers, steam bath, massage chairs & more. Join Guwahati's top fitness destination.
+      </p>
+      <div class="flex flex-wrap gap-4 mb-12">
+        <a href="tel:8135807345" class="bg-[#E63946] text-white text-[12px] font-black uppercase tracking-widest px-8 py-4 hover:bg-[#C1121F] transition-colors duration-300 flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 16.92z"/></svg>
+          Call to Join
+        </a>
+        <a href="#membership" class="border border-white/20 text-white text-[12px] font-black uppercase tracking-widest px-8 py-4 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300">
+          View Plans
+        </a>
+      </div>
+      <div class="flex items-center gap-8">
+        <div>
+          <div class="font-display text-4xl text-[#E63946]">6</div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-white/35 mt-1">Expert Trainers</div>
+        </div>
+        <div class="w-px h-12 bg-white/10"></div>
+        <div>
+          <div class="font-display text-4xl text-[#E63946]">2</div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-white/35 mt-1">Training Floors</div>
+        </div>
+        <div class="w-px h-12 bg-white/10"></div>
+        <div>
+          <div class="font-display text-4xl text-[#E63946]">₹200</div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-white/35 mt-1">Start Daily</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+    <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30">Scroll</span>
+    <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent pulse-slow"></div>
+  </div>
+</section>
+
+<!-- ========== FACILITIES ========== -->
+<section id="facilities" class="py-20 md:py-28 px-5 md:px-10 bg-[#111111] grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14">
+      <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#E63946] block mb-4">— Premium Amenities</span>
+      <h2 class="font-display text-5xl md:text-7xl uppercase leading-none">
+        World-Class<br /><span class="text-outline">Facilities</span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="images/facility-ground-floor-3.jpg" alt="Cardio & HIIT" class="facility-img w-full h-full object-cover" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Ground Floor</span>
+            <h3 class="font-display text-xl uppercase">Cardio & HIIT</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group md:col-span-2">
+        <div class="aspect-[16/7] overflow-hidden">
+          <img src="images/facility-top-floor-2.jpg" alt="Top Floor Training" class="facility-img w-full h-full object-cover" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-5">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Top Floor</span>
+            <h3 class="font-display text-2xl uppercase">Equipment & Training Zone</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="images/facility-bmr-machine.jpg" alt="BMR Machine" class="facility-img w-full h-full object-cover" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Assessment</span>
+            <h3 class="font-display text-xl uppercase">BMR Machine</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="images/facility-top-floor-3.jpg" alt="Training Equipment" class="facility-img w-full h-full object-cover" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Strength</span>
+            <h3 class="font-display text-xl uppercase">Weight Training</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="images/facility-aquaguard.jpg" alt="Aquaguard Water" class="facility-img w-full h-full object-cover" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Hydration</span>
+            <h3 class="font-display text-xl uppercase">Aquaguard Water</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="images/facility-ground-floor-2.jpg" alt="Treadmill Zone" class="facility-img w-full h-full object-cover" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Cardio</span>
+            <h3 class="font-display text-xl uppercase">Treadmill Zone</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="images/facility-steam-bath.jpg" alt="Steam Bath" class="facility-img w-full h-full object-cover object-top" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Premium</span>
+            <h3 class="font-display text-xl uppercase">Steam Bath</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-card relative overflow-hidden cursor-pointer group">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="images/facility-massage-chair.jpg" alt="Massage Chair" class="facility-img w-full h-full object-cover object-top" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946] block mb-1">Recovery</span>
+            <h3 class="font-display text-xl uppercase">Massage Chair</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== YOUTUBE VIDEOS ========== -->
+<section id="videos" class="py-20 md:py-28 px-5 md:px-10 bg-[#0A0A0A]">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14">
+      <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#E63946] block mb-4">— Take a Look Inside</span>
+      <h2 class="font-display text-5xl md:text-7xl uppercase leading-none">
+        Gym<br /><span class="text-outline">Tour</span>
+      </h2>
+      <p class="text-white/40 mt-4 text-base font-medium max-w-md">See our facilities in action. Follow us on Instagram <a href="https://www.instagram.com/sskgym" target="_blank" rel="noopener" class="text-[#E63946] hover:underline">@sskgym</a> for more.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <div class="relative overflow-hidden bg-[#111] border border-white/5">
+        <div class="aspect-video yt-poster" data-id="w2aQv7MC7KU">
+          <img src="https://img.youtube.com/vi/w2aQv7MC7KU/maxresdefault.jpg" class="w-full h-full object-cover" alt="HIIT Zone" />
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-[#E63946] flex items-center justify-center shadow-lg transition-transform duration-200 hover:scale-110">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 border-t border-white/5">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946]">Ground Floor</span>
+          <p class="font-display text-lg uppercase mt-1">HIIT Zone</p>
+        </div>
+      </div>
+
+      <div class="relative overflow-hidden bg-[#111] border border-white/5">
+        <div class="aspect-video yt-poster" data-id="FAp4pmAx9jo">
+          <img src="https://img.youtube.com/vi/FAp4pmAx9jo/maxresdefault.jpg" class="w-full h-full object-cover" alt="Steam Bath" />
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-[#E63946] flex items-center justify-center shadow-lg transition-transform duration-200 hover:scale-110">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 border-t border-white/5">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946]">Recovery</span>
+          <p class="font-display text-lg uppercase mt-1">Steam Bath</p>
+        </div>
+      </div>
+
+      <div class="relative overflow-hidden bg-[#111] border border-white/5">
+        <div class="aspect-video yt-poster" data-id="Omw2pNtSZaA">
+          <img src="https://img.youtube.com/vi/Omw2pNtSZaA/maxresdefault.jpg" class="w-full h-full object-cover" alt="Cardio Zone" />
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-[#E63946] flex items-center justify-center shadow-lg transition-transform duration-200 hover:scale-110">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 border-t border-white/5">
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] text-[#E63946]">Ground Floor</span>
+          <p class="font-display text-lg uppercase mt-1">Cardio Zone</p>
+        </div>
+      </div>
+
+      <!-- Instagram CTA -->
+      <div class="bg-[#111] border border-white/5 flex flex-col items-center justify-center p-10 text-center">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E63946" stroke-width="1.5" stroke-linecap="round" class="mb-5">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="#E63946" stroke="none"/>
+        </svg>
+        <p class="text-white/40 text-sm font-medium mb-5 max-w-xs leading-relaxed">Follow our Instagram for daily workout videos, transformation stories, and gym updates.</p>
+        <a href="https://www.instagram.com/sskgym" target="_blank" rel="noopener noreferrer"
+           class="bg-[#E63946] text-white text-[11px] font-black uppercase tracking-widest px-8 py-3 hover:bg-[#C1121F] transition-colors duration-300">
+          Follow @sskgym
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== MEMBERSHIP ========== -->
+<section id="membership" class="py-20 md:py-28 px-5 md:px-10 bg-[#111111] grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10 text-center">
+      <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#E63946] block mb-4">— 2026 Plans</span>
+      <h2 class="font-display text-5xl md:text-7xl uppercase leading-none mb-4">
+        Choose Your<br /><span class="text-[#E63946]">Commitment</span>
+      </h2>
+      <p class="text-white/40 max-w-sm mx-auto text-sm font-medium">Transparent pricing. All facilities included. No hidden charges.</p>
+    </div>
+
+    <!-- Toggle -->
+    <div class="flex justify-center mb-12">
+      <div class="inline-flex border border-white/10 p-1 gap-1">
+        <button id="tab-short" onclick="showPlans('short')" class="px-6 py-3 text-[11px] font-black uppercase tracking-widest transition-all duration-300 bg-[#E63946] text-white">Short Term</button>
+        <button id="tab-long" onclick="showPlans('long')" class="px-6 py-3 text-[11px] font-black uppercase tracking-widest transition-all duration-300 text-white/40 hover:text-white">Long Term</button>
+      </div>
+    </div>
+
+    <!-- Short Term Plans -->
+    <div id="plans-short" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Drop-In</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Daily Pass</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">200</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">Per Day · Walk-in anytime</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Registration</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Admission Fee</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">1,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">One-Time · New members</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card plan-featured p-6 flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E63946] to-transparent"></div>
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-[#E63946] text-white self-start mb-5">Most Flexible</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Monthly</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter text-[#E63946]">2,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">1 Month · Full access</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center bg-[#E63946] text-white hover:bg-[#C1121F] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Student Offer</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Student</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">1,500</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">1 Month · Valid ID required</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Senior Special</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Senior Citizen</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">1,500</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">1 Month · Age 60+</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+    </div>
+
+    <!-- Long Term Plans -->
+    <div id="plans-long" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 hidden">
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Save More</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Quarterly</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">5,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">3 Months · Uninterrupted</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Popular</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Half Yearly</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">8,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">6 Months · Great value</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card plan-featured p-6 flex flex-col relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E63946] to-transparent"></div>
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-[#E63946] text-white self-start mb-5">Best Value</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Yearly</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter text-[#E63946]">14,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">12 Months · Max savings</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center bg-[#E63946] text-white hover:bg-[#C1121F] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Couple Plan</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Couple</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">12,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">12 Months · Train together</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+      <div class="plan-card p-6 flex flex-col">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] px-2 py-1 bg-white/5 text-white/50 border border-white/10 self-start mb-5">Senior Annual</span>
+        <h3 class="text-xl font-black uppercase tracking-tight mb-1">Senior Citizen</h3>
+        <div class="my-5">
+          <span class="text-[10px] font-bold text-[#E63946]">₹</span>
+          <span class="text-5xl font-black tracking-tighter">12,000</span>
+          <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/25 mt-2">12 Months · Age 60+</p>
+        </div>
+        <a href="tel:8135807345" class="mt-auto w-full py-3 text-[10px] font-black uppercase tracking-widest text-center border border-white/15 hover:border-[#E63946] hover:text-[#E63946] transition-all duration-300 block">Enroll Now →</a>
+      </div>
+    </div>
+
+    <p class="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mt-8">
+      Call 81358 07345 to enroll · 10% PT discount on Half-Yearly & Yearly plans
+    </p>
+  </div>
+</section>
+
+<!-- ========== TRAINERS ========== -->
+<section id="trainers" class="py-20 md:py-28 px-5 md:px-10 bg-[#0A0A0A]">
+  <div class="absolute left-0 w-[400px] h-[400px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(230,57,70,0.05) 0%,transparent 70%);"></div>
+  <div class="max-w-7xl mx-auto relative">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+
+      <!-- LEFT: 60% -->
+      <div class="lg:col-span-3">
+        <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#E63946] block mb-4">— Expert Guidance</span>
+        <h2 class="font-display text-5xl md:text-6xl uppercase leading-none mb-6">
+          Personal<br /><span class="text-outline">Trainers</span>
+        </h2>
+        <p class="text-white/50 text-lg font-medium leading-relaxed max-w-lg mb-8">
+          Our certified trainers craft customized programs for your exact goals — fat loss, muscle gain, or athletic performance.
+        </p>
+
+        <!-- Discount highlight -->
+        <div class="p-6 bg-[#111] border border-[#E63946]/25 relative overflow-hidden mb-8">
+          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E63946] to-transparent"></div>
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-[#E63946]/10 border border-[#E63946]/30 flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl font-black text-[#E63946]">10%</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-black uppercase tracking-tight text-white mb-2">Personal Trainer Discount</h3>
+              <p class="text-white/50 text-sm leading-relaxed">Get <span class="text-[#E63946] font-bold">10% off</span> on PT sessions when you enroll in a <span class="text-white font-semibold">Half-Yearly</span> or <span class="text-white font-semibold">Yearly</span> membership plan.</p>
+              <div class="mt-4 flex flex-wrap gap-3">
+                <span class="text-[9px] font-black uppercase tracking-[0.3em] px-3 py-1.5 border border-[#E63946]/30 text-[#E63946]">Half-Yearly Plan</span>
+                <span class="text-[9px] font-black uppercase tracking-[0.3em] px-3 py-1.5 border border-[#E63946]/30 text-[#E63946]">Yearly Plan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What's included -->
+        <p class="text-[10px] font-black uppercase tracking-[0.25em] text-[#E63946]/70 mb-4">What's Included</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="group relative p-5 bg-[#111] border border-white/8 hover:border-[#E63946]/50 transition-all duration-300 overflow-hidden">
+            <div class="absolute top-0 left-0 w-0 h-0" style="border-top:32px solid rgba(230,57,70,0.18);border-right:32px solid transparent;"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:via-[#E63946]/60 transition-all duration-500"></div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 flex items-center justify-center bg-[#E63946]/10 border border-[#E63946]/25 text-[#E63946] flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-black uppercase tracking-tight text-white mb-1 group-hover:text-[#E63946] transition-colors">Custom Workout Plans</h4>
+                <p class="text-[11px] text-white/40 leading-relaxed">Tailored programs built around your body type and goals</p>
+              </div>
+            </div>
+          </div>
+          <div class="group relative p-5 bg-[#111] border border-white/8 hover:border-[#E63946]/50 transition-all duration-300 overflow-hidden">
+            <div class="absolute top-0 left-0 w-0 h-0" style="border-top:32px solid rgba(230,57,70,0.18);border-right:32px solid transparent;"></div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 flex items-center justify-center bg-[#E63946]/10 border border-[#E63946]/25 text-[#E63946] flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><circle cx="18" cy="6" r="3"/></svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-black uppercase tracking-tight text-white mb-1 group-hover:text-[#E63946] transition-colors">Diet & Nutrition Guidance</h4>
+                <p class="text-[11px] text-white/40 leading-relaxed">Expert meal plans to fuel performance and recovery</p>
+              </div>
+            </div>
+          </div>
+          <div class="group relative p-5 bg-[#111] border border-white/8 hover:border-[#E63946]/50 transition-all duration-300 overflow-hidden">
+            <div class="absolute top-0 left-0 w-0 h-0" style="border-top:32px solid rgba(230,57,70,0.18);border-right:32px solid transparent;"></div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 flex items-center justify-center bg-[#E63946]/10 border border-[#E63946]/25 text-[#E63946] flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-black uppercase tracking-tight text-white mb-1 group-hover:text-[#E63946] transition-colors">Progress Tracking</h4>
+                <p class="text-[11px] text-white/40 leading-relaxed">Regular check-ins and measurable milestone reviews</p>
+              </div>
+            </div>
+          </div>
+          <div class="group relative p-5 bg-[#111] border border-white/8 hover:border-[#E63946]/50 transition-all duration-300 overflow-hidden">
+            <div class="absolute top-0 left-0 w-0 h-0" style="border-top:32px solid rgba(230,57,70,0.18);border-right:32px solid transparent;"></div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 flex items-center justify-center bg-[#E63946]/10 border border-[#E63946]/25 text-[#E63946] flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 10h2l2-3 2 6 2-3h2"/></svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-black uppercase tracking-tight text-white mb-1 group-hover:text-[#E63946] transition-colors">BMR-Based Assessment</h4>
+                <p class="text-[11px] text-white/40 leading-relaxed">Precise body composition analysis using BMR technology</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 40% — trainer cards -->
+      <div class="lg:col-span-2 flex flex-col gap-3">
+        <p class="text-[10px] font-black uppercase tracking-[0.25em] text-[#E63946]/60 mb-1">Tap a trainer for bio &amp; skills</p>
+
+        <!-- Cards generated by JS -->
+        <div id="trainer-cards" class="flex flex-col gap-3"></div>
+
+        <!-- CTA -->
+        <div class="p-5 bg-[#E63946]/8 border border-[#E63946]/20 text-center relative overflow-hidden mt-1">
+          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E63946]/30 to-transparent"></div>
+          <p class="text-sm font-bold text-white/70 mb-3 uppercase tracking-tight">Book a free consultation</p>
+          <a href="tel:8135807345" class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#E63946] border border-[#E63946]/40 px-6 py-3 hover:bg-[#E63946] hover:text-white transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 16.92z"/></svg>
+            Call Now — 81358 07345
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRAINER MODAL ========== -->
+<div id="trainer-modal" class="fixed inset-0 z-[300] items-start justify-center p-4 md:p-6 md:items-center overflow-y-auto">
+  <div id="modal-backdrop" class="fixed inset-0 bg-black/90 backdrop-blur-md cursor-pointer"></div>
+  <div id="modal-box" class="relative max-w-4xl w-full bg-[#0D0D0D] border border-white/10 flex flex-col md:flex-row overflow-hidden shadow-2xl z-10 my-auto">
+    <button id="modal-close" class="absolute top-4 right-4 z-30 w-8 h-8 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-[#E63946] hover:border-transparent transition-all duration-200">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <!-- Photo side -->
+    <div class="relative w-full md:w-5/12 h-[380px] md:h-auto md:min-h-[480px] overflow-hidden flex-shrink-0 bg-black flex items-center justify-center">
+      <div id="modal-photo-wrap" class="absolute inset-0 flex items-center justify-center"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[#E63946]/60 pointer-events-none z-10"></div>
+      <div id="modal-quote" class="absolute bottom-5 left-5 right-5 p-4 bg-black/80 border border-[#E63946]/30 z-10">
+        <p id="modal-quote-text" class="text-xs italic text-white/90 leading-relaxed font-medium"></p>
+        <span id="modal-quote-name" class="text-[8px] font-black uppercase tracking-[0.25em] text-[#E63946] mt-2 block"></span>
+      </div>
+    </div>
+    <!-- Info side -->
+    <div class="w-full md:w-7/12 p-6 md:p-10 flex flex-col justify-between gap-6 bg-[#131313]">
+      <div>
+        <div id="modal-role-badge" class="inline-block px-3 py-1 bg-[#E63946]/10 border border-[#E63946]/30 text-[#E63946] text-[8px] font-black uppercase tracking-[0.2em] mb-3"></div>
+        <h2 id="modal-name" class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white mb-1 leading-none font-display"></h2>
+        <p id="modal-spec" class="text-xs font-bold uppercase tracking-wider text-[#E63946] mb-4"></p>
+        <div class="h-px bg-white/10 w-full mb-4"></div>
+        <p id="modal-bio" class="text-xs text-white/60 leading-relaxed font-medium mb-6"></p>
+        <div class="space-y-4">
+          <h4 class="text-[9px] font-black uppercase tracking-[0.2em] text-[#E63946]">Coaching Competency Metrics</h4>
+          <div>
+            <div class="flex justify-between text-[10px] font-black uppercase tracking-wider text-white mb-1">
+              <span>Strength Coaching</span><span id="bar-s-val" class="text-[#E63946]"></span>
+            </div>
+            <div class="h-1.5 bg-[#1F1F1F] rounded-full overflow-hidden">
+              <div id="bar-strength" class="skill-bar-fill h-full bg-[#E63946] rounded-full"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[10px] font-black uppercase tracking-wider text-white mb-1">
+              <span>Conditioning</span><span id="bar-c-val" class="text-[#E63946]"></span>
+            </div>
+            <div class="h-1.5 bg-[#1F1F1F] rounded-full overflow-hidden">
+              <div id="bar-conditioning" class="skill-bar-fill h-full bg-[#E63946] rounded-full"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[10px] font-black uppercase tracking-wider text-white mb-1">
+              <span>Diet Planning</span><span id="bar-n-val" class="text-[#E63946]"></span>
+            </div>
+            <div class="h-1.5 bg-[#1F1F1F] rounded-full overflow-hidden">
+              <div id="bar-nutrition" class="skill-bar-fill h-full bg-[#E63946] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="grid grid-cols-3 gap-2 border-t border-b border-white/5 py-4 mb-6">
+          <div class="text-center">
+            <span class="block text-[8px] font-black uppercase tracking-widest text-white/30 mb-0.5">Experience</span>
+            <span id="modal-exp" class="text-xs font-black uppercase tracking-tight text-white"></span>
+          </div>
+          <div class="text-center border-l border-r border-white/5">
+            <span class="block text-[8px] font-black uppercase tracking-widest text-white/30 mb-0.5">Success Stories</span>
+            <span id="modal-transforms" class="text-xs font-black uppercase tracking-tight text-white"></span>
+          </div>
+          <div class="text-center">
+            <span class="block text-[8px] font-black uppercase tracking-widest text-white/30 mb-0.5">Credentials</span>
+            <span class="text-xs font-black uppercase tracking-tight text-[#E63946]">CERTIFIED</span>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:8135807345" class="flex-1 py-3 bg-[#E63946] text-white text-[10px] font-black uppercase tracking-widest text-center hover:bg-[#D62839] transition-all duration-300 flex items-center justify-center gap-2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 16.92z"/></svg>
+            Schedule 1-on-1 Session
+          </a>
+          <button id="modal-close-btn" class="px-6 py-3 border border-white/10 text-white hover:text-[#E63946] hover:border-[#E63946]/40 text-[10px] font-black uppercase tracking-widest transition-all duration-300">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="py-20 md:py-28 px-5 md:px-10 bg-[#111111] grid-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14">
+      <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#E63946] block mb-4">— Find Us</span>
+      <h2 class="font-display text-5xl md:text-7xl uppercase leading-none">
+        Visit <span class="text-[#E63946]">SSK</span><br /><span class="text-outline">Gym</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- Address + Contact -->
+      <div class="bg-[#0A0A0A] border border-white/5 p-7 flex flex-col gap-8">
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 block mb-4">Location</span>
+          <address class="not-italic">
+            <p class="text-xl font-black uppercase tracking-tight text-white mb-2">SSK Gym</p>
+            <p class="text-white/55 text-sm leading-relaxed font-medium">
+              Lakhimi Path,<br />Beltola Tiniali,<br />Guwahati – 781028<br />Assam, India
+            </p>
+          </address>
+        </div>
+        <div class="h-px bg-white/5"></div>
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 block mb-3">Contact</span>
+          <a href="tel:8135807345" class="text-2xl font-black text-white hover:text-[#E63946] transition-colors tracking-tight block">81358 07345</a>
+          <a href="mailto:sskgym03@gmail.com" class="text-sm font-bold text-white/50 hover:text-[#E63946] transition-colors mt-2 block">sskgym03@gmail.com</a>
+        </div>
+        <a href="tel:8135807345" class="w-full bg-[#E63946] text-white text-[11px] font-black uppercase tracking-widest py-4 flex items-center justify-center gap-2 hover:bg-[#C1121F] transition-colors duration-300">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+
+      <!-- Timings -->
+      <div class="bg-[#0A0A0A] border border-white/5 p-7">
+        <span class="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 block mb-6">Gym Timings</span>
+        <div class="flex flex-col gap-1">
+          <div class="flex justify-between py-3 border-b border-white/5"><span class="text-sm font-bold text-white/60">Monday</span><span class="text-sm font-bold text-white">5:00 AM – 11:00 PM</span></div>
+          <div class="flex justify-between py-3 border-b border-white/5"><span class="text-sm font-bold text-white/60">Tuesday</span><span class="text-sm font-bold text-white">5:00 AM – 11:00 PM</span></div>
+          <div class="flex justify-between py-3 border-b border-white/5"><span class="text-sm font-bold text-white/60">Wednesday</span><span class="text-sm font-bold text-white">5:00 AM – 11:00 PM</span></div>
+          <div class="flex justify-between py-3 border-b border-white/5"><span class="text-sm font-bold text-white/60">Thursday</span><span class="text-sm font-bold text-white">5:00 AM – 11:00 PM</span></div>
+          <div class="flex justify-between py-3 border-b border-white/5"><span class="text-sm font-bold text-white/60">Friday</span><span class="text-sm font-bold text-white">5:00 AM – 11:00 PM</span></div>
+          <div class="flex justify-between py-3 border-b border-white/5"><span class="text-sm font-bold text-white/60">Saturday</span><span class="text-sm font-bold text-white">5:00 AM – 11:00 PM</span></div>
+          <div class="flex justify-between py-3"><span class="text-sm font-bold text-white/60">Sunday</span><span class="text-sm font-bold text-[#E63946]">5:00 AM – 12:00 Noon</span></div>
+        </div>
+        <div class="mt-6 p-4 bg-[#E63946]/8 border border-[#E63946]/20">
+          <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#E63946] mb-1">Note</p>
+          <p class="text-xs text-white/50 leading-relaxed">Timings may vary on public holidays. Call ahead to confirm.</p>
+        </div>
+      </div>
+
+      <!-- CTA + Directions -->
+      <div class="flex flex-col gap-4">
+        <div class="bg-[#0A0A0A] border border-white/5 p-7 flex-1 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E63946] to-transparent"></div>
+          <h3 class="text-3xl font-display uppercase leading-tight mb-4">
+            Start Your Journey<br /><span class="text-[#E63946]">Today</span>
+          </h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-6">Walk in, call us, or drop an email — we'll help you find the right plan and get started right away.</p>
+          <div class="flex flex-col gap-3 mb-6">
+            <div class="flex items-center gap-3"><span class="text-[#E63946] font-black">✓</span><span class="text-sm text-white/60">All facilities included</span></div>
+            <div class="flex items-center gap-3"><span class="text-[#E63946] font-black">✓</span><span class="text-sm text-white/60">Student & senior special pricing</span></div>
+            <div class="flex items-center gap-3"><span class="text-[#E63946] font-black">✓</span><span class="text-sm text-white/60">10% PT discount on longer plans</span></div>
+            <div class="flex items-center gap-3"><span class="text-[#E63946] font-black">✓</span><span class="text-sm text-white/60">Dedicated female trainer</span></div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <a href="tel:8135807345" class="w-full bg-[#E63946] text-white text-[11px] font-black uppercase tracking-widest py-4 flex items-center justify-center hover:bg-[#C1121F] transition-colors duration-300">
+              Enroll: 81358 07345
+            </a>
+            <a href="https://maps.app.goo.gl/GMzqLQE6GfM8CDzYA" target="_blank" rel="noopener noreferrer"
+               class="w-full border border-white/10 text-white/50 text-[11px] font-black uppercase tracking-widest py-4 flex items-center justify-center hover:border-[#E63946]/50 hover:text-[#E63946] transition-all duration-300">
+              Get Directions →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-[#0A0A0A] border border-white/5 px-5 py-4 flex items-center gap-4">
+          <div class="w-8 h-8 bg-[#E63946]/10 border border-[#E63946]/30 flex items-center justify-center flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E63946" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <p class="text-sm font-bold text-white/60">Beltola Tiniali, Guwahati – 781028</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="border-t border-white/5 bg-[#0A0A0A] py-8 px-5 md:px-10">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
+    <a href="#" class="flex items-center gap-3">
+      <div class="bg-white rounded-md p-1">
+      <img src="images/logo-updated.jpg" alt="SSK Gym" class="h-8 w-auto" />
+    </div>
+    </a>
+    <div class="flex items-center gap-6 text-[13px] font-medium text-white/40">
+      <a href="#facilities" class="hover:text-white transition-colors">Facilities</a>
+      <a href="#membership" class="hover:text-white transition-colors">Membership</a>
+      <a href="#trainers" class="hover:text-white transition-colors">Trainers</a>
+      <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </div>
+    <div class="flex flex-col items-center sm:items-end gap-2">
+      <a href="https://www.instagram.com/sskgym" target="_blank" rel="noopener noreferrer"
+         class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/30 hover:text-[#E63946] transition-colors duration-200">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        @sskgym
+      </a>
+      <p class="text-[12px] font-medium text-white/20">© 2026 SSKGym. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+  }, { passive: true });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.nav-mobile');
+
+  function openMenu() {
+    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+    mobileMenu.classList.add('opacity-100');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenu.classList.remove('opacity-100');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  // ===== YOUTUBE CLICK-TO-PLAY =====
+  document.querySelectorAll('.yt-poster').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => {
+      const id = el.dataset.id;
+      el.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  });
+
+  // ===== TRAINER DATA & CARDS =====
+  const trainers = [
+    { name:'Gautam Hazarika', role:'Head Trainer', spec:'Strength · Conditioning · Performance', image:'images/trainer-gautam.jpg', exp:'HEAD', experience:'10+ Years', transformations:'500+ Clients', quote:'Your body can stand almost anything. It is your mind that you have to convince.', skills:{strength:98,conditioning:95,nutrition:90}, bio:'With over a decade of elite fitness coaching experience, Gautam is dedicated to pushing athletic limits. He specialises in advanced strength training, competitive powerlifting conditioning, and functional hypertrophy.' },
+    { name:'Sankar Hazarika', role:'Personal Trainer', spec:'Powerlifting · Hypertrophy', image:'images/trainer-sankar.jpg', exp:'TRAINER', experience:'7+ Years', transformations:'300+ Clients', quote:'Strength does not come from winning. Your struggles develop your strengths.', skills:{strength:95,conditioning:90,nutrition:85}, bio:'An expert in heavy liftoffs and mechanical tension hypertrophy. Sankar has trained competitive powerlifters and helped hundreds build dense, functional muscle.' },
+    { name:'Sanjeev Basumutary', role:'Personal Trainer', spec:'Muscle Gain · Sports Nutrition', image:'', exp:'TRAINER', experience:'6+ Years', transformations:'250+ Clients', quote:'Fuel your body right, and the results will follow.', skills:{strength:92,conditioning:88,nutrition:95}, bio:'Specialising in hyper-focused muscle hypertrophy programs and custom sports nutrition plans, Sanjeev ensures every workout is backed by calibrated biological fuel.' },
+    { name:'Malin Roy', role:'Personal Trainer', spec:'Weight Loss · Functional Fitness', image:'images/trainer-malin.jpg', exp:'TRAINER', experience:'5+ Years', transformations:'400+ Clients', quote:'Fitness is a journey, not a destination. Embrace the process.', skills:{strength:88,conditioning:95,nutrition:90}, bio:'Dedicated to body composition transformation and functional mobility, Malin creates dynamic, high-burn workouts designed to incinerate fat while locking in athletic movement.' },
+    { name:'Bikash Nath', role:'Personal Trainer', spec:'Cardio · HIIT · Endurance', image:'images/trainer-bikash.jpg', exp:'TRAINER', experience:'4+ Years', transformations:'200+ Clients', quote:'Push past your limits — that is where the magic happens.', skills:{strength:85,conditioning:98,nutrition:85}, bio:'A cardio and endurance engine specialist. Bikash pushes aerobic limits with intense HIIT, increasing cardiovascular thresholds and athletic stamina.' },
+    { name:'Tulsi Boro', role:'Female Trainer', spec:"Women's Fitness · Flexibility · Wellness", image:'images/trainer-tulsi.jpg', exp:'FEMALE', experience:'4+ Years', transformations:'150+ Clients', quote:'Wellness is the harmonious balance of mind, body, and strength.', skills:{strength:80,conditioning:90,nutrition:92}, bio:"Tulsi specialises in women-centric body toning, flexibility enhancement, and total wellness pathways that build confidence and deep core strength." },
+    { name:'Nitu', role:'Floor Trainer', spec:'Floor Training · Guidance', image:'images/trainer-nitu.jpg', exp:'FLOOR', experience:'3+ Years', transformations:'100+ Clients', quote:'Perfect your form today, and prevent injuries tomorrow.', skills:{strength:85,conditioning:85,nutrition:80}, bio:'Our floor guide dedicated to maintaining absolute safety and lifting precision. Nitu oversees floor dynamics, correcting posture and coaching foundational movements.' },
+  ];
+
+  // Render trainer cards
+  const cardsContainer = document.getElementById('trainer-cards');
+  trainers.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'trainer-card flex items-stretch overflow-hidden';
+    card.innerHTML = `
+      <div class="red-bar"></div>
+      <div class="card-glow"></div>
+      <div class="w-24 flex-shrink-0 overflow-hidden bg-[#121212] ${t.image ? '' : 'flex items-center justify-center'}">
+        ${t.image
+          ? `<img src="${t.image}" alt="${t.name}" class="trainer-img w-full h-full object-cover object-top" />`
+          : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
+        }
+      </div>
+      <div class="flex-1 flex items-center justify-between px-5 py-4">
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <h3 class="card-name text-base font-black uppercase tracking-tight text-white truncate">${t.name}</h3>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E63946] opacity-0 transition-opacity duration-300 flex-shrink-0 dot-pulse"></span>
+          </div>
+          <p class="text-[10px] font-bold uppercase tracking-widest text-[#E63946]/80 mt-0.5 mb-1">${t.role}</p>
+          <p class="text-xs text-white/40 truncate">${t.spec}</p>
+        </div>
+        <span class="text-[9px] font-black uppercase tracking-[0.2em] text-white/20 flex-shrink-0 ml-3 pr-2">${t.exp}</span>
+      </div>`;
+    card.addEventListener('mouseenter', () => card.querySelector('.dot-pulse').style.opacity = '1');
+    card.addEventListener('mouseleave', () => card.querySelector('.dot-pulse').style.opacity = '0');
+    card.addEventListener('click', () => openModal(i));
+    cardsContainer.appendChild(card);
+  });
+
+  // Modal logic
+  const modal = document.getElementById('trainer-modal');
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('modal-close');
+  const closeBtnBottom = document.getElementById('modal-close-btn');
+
+  function openModal(i) {
+    const t = trainers[i];
+    // Reset skill bars
+    document.getElementById('bar-strength').style.width = '0';
+    document.getElementById('bar-conditioning').style.width = '0';
+    document.getElementById('bar-nutrition').style.width = '0';
+
+    // Populate
+    document.getElementById('modal-role-badge').textContent = t.role;
+    document.getElementById('modal-name').textContent = t.name;
+    document.getElementById('modal-spec').textContent = t.spec;
+    document.getElementById('modal-bio').textContent = t.bio;
+    document.getElementById('modal-quote-text').textContent = '“' + t.quote + '”';
+    document.getElementById('modal-quote-name').textContent = '— ' + t.name;
+    document.getElementById('modal-exp').textContent = t.experience;
+    document.getElementById('modal-transforms').textContent = t.transformations;
+    document.getElementById('bar-s-val').textContent = t.skills.strength + '%';
+    document.getElementById('bar-c-val').textContent = t.skills.conditioning + '%';
+    document.getElementById('bar-n-val').textContent = t.skills.nutrition + '%';
+
+    // Photo
+    const photoWrap = document.getElementById('modal-photo-wrap');
+    photoWrap.innerHTML = t.image
+      ? `<img src="${t.image}" alt="${t.name}" class="absolute inset-0 w-full h-full object-cover object-center" />`
+      : `<div class="absolute inset-0 flex flex-col items-center justify-center bg-[#070707] p-8">
+           <div class="w-24 h-24 mb-4"><img src="images/logo-updated.jpg" alt="SSK Gym" class="w-full h-full object-contain rounded" /></div>
+           <span class="text-[10px] font-black uppercase tracking-[0.3em] text-[#E63946]">SSK GYM</span>
+         </div>`;
+
+    // Show modal, re-animate box
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const box = document.getElementById('modal-box');
+    box.style.animation = 'none';
+    box.offsetHeight; // reflow
+    box.style.animation = '';
+
+    // Animate skill bars after short delay
+    setTimeout(() => {
+      document.getElementById('bar-strength').style.width = t.skills.strength + '%';
+      document.getElementById('bar-conditioning').style.width = t.skills.conditioning + '%';
+      document.getElementById('bar-nutrition').style.width = t.skills.nutrition + '%';
+    }, 100);
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  closeBtnBottom.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Membership plan toggle
+  function showPlans(type) {
+    const shortPlans = document.getElementById('plans-short');
+    const longPlans = document.getElementById('plans-long');
+    const tabShort = document.getElementById('tab-short');
+    const tabLong = document.getElementById('tab-long');
+
+    if (type === 'short') {
+      shortPlans.classList.remove('hidden');
+      longPlans.classList.add('hidden');
+      tabShort.classList.add('bg-[#E63946]', 'text-white');
+      tabShort.classList.remove('text-white/40');
+      tabLong.classList.remove('bg-[#E63946]', 'text-white');
+      tabLong.classList.add('text-white/40');
+    } else {
+      shortPlans.classList.add('hidden');
+      longPlans.classList.remove('hidden');
+      tabLong.classList.add('bg-[#E63946]', 'text-white');
+      tabLong.classList.remove('text-white/40');
+      tabShort.classList.remove('bg-[#E63946]', 'text-white');
+      tabShort.classList.add('text-white/40');
+    }
+  }
+</script>
+
+</body>
+</html>
