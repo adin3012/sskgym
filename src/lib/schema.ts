@@ -23,8 +23,8 @@ export const localBusinessSchema: WithContext<LocalBusiness> = {
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 26.1445,
-    longitude: 91.7362,
+    latitude: 26.124334,
+    longitude: 91.798,
   },
   openingHoursSpecification: [
     {
